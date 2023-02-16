@@ -3,6 +3,9 @@
 
 import './App.css';
 //import CampsitesList from './features/campsites/CampsitesList';
+import {Routes, Route} from "react-router-dom";
+import ContactPage from './pages/ContactPage';
+import HomePage from './pages/HomePage';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CampsitesDirectoryPage from './pages/CampsitesDirectoryPage';
@@ -13,12 +16,21 @@ import CampsitesDirectoryPage from './pages/CampsitesDirectoryPage';
 //in the CampsitesList.js we will see that the arrow function for this functional component has an empty parameter list
 //After the creation of the CampsiteDirectoryPage.js component, we are no longer rendering the CampsitesLits component here
 //We will render the CampsiteDirectoryPage.js instead as this new component will not only show the list of Campsites but also a random featured campsite 
+//Next we will be installing Router so we can navigate between the different views ('pages') of our app
+//We will remove the CampsitesDirectoryPage.js component from being rendered between the Header and Footer component
+//Nested inside of the Routes component we will set up each individual Route
+//Each Route components - All path props are strings, so they will be in single quotes. All element props are components, and are passed using curly braces.
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <CampsitesDirectoryPage />
+     <Routes>
+      <Route path="/" element={<HomePage />}/>
+      <Route path="contact" element={<ContactPage />}/>
+      <Route path="directory" element={<CampsitesDirectoryPage />}/>
+
+     </Routes>
       <Footer />
     </div>
   );
