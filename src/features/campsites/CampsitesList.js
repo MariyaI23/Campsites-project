@@ -21,9 +21,15 @@ import { selectAllCampsites } from "./campsitesSlice";
 //This state update will trigger React to re-render, and since the campsiteId value has changed, so will the selectedCampsite value in CampsiteDirectoryPage, 
 //which is then passed to CampsiteDetail to display the new campsite's details.
 
+//After the creation of the CampsiteDeatilaPage and the restructuring of the CampsitesDirectoryPage, we are no longer passing the setCampisteId
+//argument to the CampsitesList parameter list
+//therefore we can coment out the onClick prop that uses the setCampsiteId function that we used to pass
+//But we still need a way for users to click on a campsite to see its details
+//We will use the CampsiteCard.js component for this
 
 
-const CampsitesList = ({setCampsiteId}) => {
+
+const CampsitesList = () => {
     const campsites = selectAllCampsites();
     return (
         <Row className="ms-auto">
@@ -33,7 +39,7 @@ const CampsitesList = ({setCampsiteId}) => {
                         md="5" 
                         className="m-4" 
                         key={campsite.id}
-                        onClick={() => setCampsiteId(campsite.id)}
+                        // onClick={() => setCampsiteId(campsite.id)}
                     >
                         <CampsiteCard campsite={campsite}/>
                     </Col>

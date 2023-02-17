@@ -1,9 +1,9 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import CampsitesList from '../features/campsites/CampsitesList';
-import CampsiteDetail from '../features/campsites/CampsiteDetail';
+//import CampsiteDetail from '../features/campsites/CampsiteDetail';
 //import {selectRandomCampsite} from '../features/campsites/campsitesSlice';
-import { selectCampsiteById } from '../features/campsites/campsitesSlice';
+//import { selectCampsiteById } from '../features/campsites/campsitesSlice';
 
 // CampsiteDetail will take in a single prop, which we'll call campsite. We'll set its value to a JavaScript variable named selectedCampsite. 
 //Since this is JavaScript used inside JSX, we must surround it in curly braces.
@@ -40,6 +40,14 @@ import { selectCampsiteById } from '../features/campsites/campsitesSlice';
 //We are not invoking the setCampsiteId function here, we are just passing it.
 //We can give the prop the same name as the function just to avoid confusion but technically the prop can be named anything
 
+
+//After the creation of the CampsiteDetailPage.js component, the CampsiteDetail.js component will get rendered there an not here anymore
+//That way on the this page - CampsiteDirectoryPage.js we will only be rendering the list of campsites but once a user clicks on a campsite
+//this campsite's details will no longer be shown on this page but on a page of their own - CampsiteDeatilPage
+//Therefore we no longer need the useState hook here so we can remove that import, also the CampsiteDetail component import and the import for the selectCampisteId function
+//We will also coment out the variables prior to the return statement that deal with useState and the selector function
+//Inside of the return statement the only thing that we will render is the CampsitesList component and we will no longer be passing the setCampsiteId={setCampsiteId} prop in it
+
 const CampsitesDirectoryPage = () => {
     // let selectedCampsite = selectRandomCampsite();
 
@@ -48,22 +56,24 @@ const CampsitesDirectoryPage = () => {
     //     console.log(selectedCampsite)
     //}
 
-    const [campsiteId, setCampsiteId] = useState(0);
-    const selectedCampsite = selectCampsiteById(campsiteId)
+    //const [campsiteId, setCampsiteId] = useState(0);
+    //const selectedCampsite = selectCampsiteById(campsiteId)
 
     return (
         <Container>
             {/* <Button onClick={() => toggleCampsite(selectRandomCampsite())}>
                 Select Random Campsite
             </Button> */}
-            <Row>
-                <Col sm='5' md='7'>
-                    <CampsitesList setCampsiteId ={setCampsiteId}/>
-                </Col>
-                <Col sm='7' md='5'>
+            {/* <Row> */}
+                {/* <Col sm='5' md='7'> */}
+                    <CampsitesList />
+                {/* </Col> */}
+
+                {/* <Col sm='7' md='5'> 
                     <CampsiteDetail campsite={selectedCampsite}/>
-                </Col>
-            </Row>
+                </Col> */}
+
+            {/* </Row> */}
         </Container>
     )
 };

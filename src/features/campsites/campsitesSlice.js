@@ -24,8 +24,12 @@ export const selectAllCampsites = () => {
 //This new selectCampsiteById() function takes an argument of id 
 //and returns the first object in the CAMPSITES array with a matching id (that will be the id that was passed in as an argument to the selectCampsiteById function).
 //This function is invoked in the CampsitesDirectoryPage where we are passing the id stored in the state variable - campsiteId, which is 0 since this variable holds whatever we have set the initial state to be
+//Aftre the creation of the CampsiteDetailPage and the restructuring of the app to show each campsite's details that is clicked on the Directory page into its own separate page
+//we need to fix this part of the below selector function: campsite.id===id
+//we are no longer comparing a number to a number id===id, now that we are getting the value of id froma URL parameter, the value of id is now a string, not a number
+//in order to turn the value of id back into a number we can use the built in JS function parseInt() - now can again compare campsite.id === id, since id is now again a number
 export const selectCampsiteById = (id) => {
-    return CAMPSITES.find((campsite) => campsite.id === id);
+    return CAMPSITES.find((campsite) => campsite.id === parseInt(id))
 } 
 
 //This selector function will be used to display 1 of the campsites from the CAMPSITES array that has it's featured property set to true (if we check all the campsites in the CAMPSITES.js we can see that there is only campsite that has featured set to true)

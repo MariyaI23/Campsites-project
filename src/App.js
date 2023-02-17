@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CampsitesDirectoryPage from './pages/CampsitesDirectoryPage';
+import CampsiteDetailPage from './pages/CampsiteDetailPage';
 
 
 /*The href="/" in the NavbarBrand below means that when someone clicks on the Logo they'll be taken to our root folder (the home page of our app) */
@@ -20,6 +21,8 @@ import CampsitesDirectoryPage from './pages/CampsitesDirectoryPage';
 //We will remove the CampsitesDirectoryPage.js component from being rendered between the Header and Footer component
 //Nested inside of the Routes component we will set up each individual Route
 //Each Route components - All path props are strings, so they will be in single quotes. All element props are components, and are passed using curly braces.
+//The Route with a path="directory/:campsiteId" has that colon (:) in front of campsiteId because
+//this is how we let react-router know that we intend to use campsiteId as a parameter name and NOT a literal path like the words contact or directory used in the above Routes
 
 function App() {
   return (
@@ -29,7 +32,10 @@ function App() {
       <Route path="/" element={<HomePage />}/>
       <Route path="contact" element={<ContactPage />}/>
       <Route path="directory" element={<CampsitesDirectoryPage />}/>
-
+      <Route 
+        path="directory/:campsiteId"
+        element={<CampsiteDetailPage/>}
+      />
      </Routes>
       <Footer />
     </div>
