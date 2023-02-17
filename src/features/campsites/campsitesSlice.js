@@ -27,3 +27,13 @@ export const selectAllCampsites = () => {
 export const selectCampsiteById = (id) => {
     return CAMPSITES.find((campsite) => campsite.id === id);
 } 
+
+//This selector function will be used to display 1 of the campsites from the CAMPSITES array that has it's featured property set to true (if we check all the campsites in the CAMPSITES.js we can see that there is only campsite that has featured set to true)
+//This campsite will be displayed on the Home page but this selector function will be invoked first in the DisplayList.js component
+//We will use the find() method to go over the array of campsites to find the one we want
+//The find() method has 1 argument - that is a testing function. Whenever this testing function returns a truthy value then our test has passed
+//In this case we don't have to write campsite.featured===true which is redundant. It is enough just to write campiste.featured - either this featured property is truthy in which case this item will be returned from the array ot it is not.
+
+export const selectFeaturedCampsite = () => {
+    return CAMPSITES.find((campsite) => campsite.featured)
+}
