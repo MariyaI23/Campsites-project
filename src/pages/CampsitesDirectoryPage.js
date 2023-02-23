@@ -4,6 +4,7 @@ import CampsitesList from '../features/campsites/CampsitesList';
 //import CampsiteDetail from '../features/campsites/CampsiteDetail';
 //import {selectRandomCampsite} from '../features/campsites/campsitesSlice';
 //import { selectCampsiteById } from '../features/campsites/campsitesSlice';
+import SubHeader from '../components/SubHeader';
 
 // CampsiteDetail will take in a single prop, which we'll call campsite. We'll set its value to a JavaScript variable named selectedCampsite. 
 //Since this is JavaScript used inside JSX, we must surround it in curly braces.
@@ -61,6 +62,7 @@ const CampsitesDirectoryPage = () => {
 
     return (
         <Container>
+            <SubHeader current="Directory" />
             {/* <Button onClick={() => toggleCampsite(selectRandomCampsite())}>
                 Select Random Campsite
             </Button> */}
