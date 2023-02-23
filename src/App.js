@@ -27,7 +27,7 @@ import CampsiteDetailPage from './pages/CampsiteDetailPage';
 function App() {
   return (
     <div className="App">
-      <Header />
+     <Header />
      <Routes>
       <Route path="/" element={<HomePage />}/>
       <Route path="contact" element={<ContactPage />}/>
@@ -37,7 +37,7 @@ function App() {
         element={<CampsiteDetailPage/>}
       />
      </Routes>
-      <Footer />
+     <Footer />
     </div>
   );
 }

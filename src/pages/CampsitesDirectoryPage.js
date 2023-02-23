@@ -43,7 +43,7 @@ import CampsitesList from '../features/campsites/CampsitesList';
 
 //After the creation of the CampsiteDetailPage.js component, the CampsiteDetail.js component will get rendered there an not here anymore
 //That way on the this page - CampsiteDirectoryPage.js we will only be rendering the list of campsites but once a user clicks on a campsite
-//this campsite's details will no longer be shown on this page but on a page of their own - CampsiteDeatilPage
+//this campsite's details will no longer be shown on this page but on a page of their own - CampsiteDetailPage
 //Therefore we no longer need the useState hook here so we can remove that import, also the CampsiteDetail component import and the import for the selectCampisteId function
 //We will also coment out the variables prior to the return statement that deal with useState and the selector function
 //Inside of the return statement the only thing that we will render is the CampsitesList component and we will no longer be passing the setCampsiteId={setCampsiteId} prop in it
