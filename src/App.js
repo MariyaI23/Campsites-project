@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CampsitesDirectoryPage from './pages/CampsitesDirectoryPage';
 import CampsiteDetailPage from './pages/CampsiteDetailPage';
+import AboutPage from './pages/AboutPage';
 
 
 /*The href="/" in the NavbarBrand below means that when someone clicks on the Logo they'll be taken to our root folder (the home page of our app) */
@@ -36,6 +37,7 @@ function App() {
         path="directory/:campsiteId"
         element={<CampsiteDetailPage/>}
       />
+      <Route path="about" element={<AboutPage />}/>
      </Routes>
      <Footer />
     </div>
