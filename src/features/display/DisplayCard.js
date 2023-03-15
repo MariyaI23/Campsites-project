@@ -5,6 +5,9 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 //Here we are destructuring it as this prop should return an item from the Campistes or the Promotiosn array
 //the item that is returned is an object
 //above the return statement we are destructuring some of the properties of that object so we can display them in a Card
+
+//After the creation of the AnimatedDisplayCard.js component we started using that in the DisplayList.js instead of this component here
+
 const DisplayCard =({item}) => {
     const {image, name, description} = item;
 
