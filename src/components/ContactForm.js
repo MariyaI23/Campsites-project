@@ -7,6 +7,15 @@ import { Formik, Field, Forms, Form } from "formik";
 //initialValues={{}} - this prop expects a JS object for its value. We will define the object inline by using another set of curly braces inside
 //the outher curly braces are just to sagnify that we will be writting JS inside of JSX
 //Inside this object we will define properties for each of the Fields we will use in our form and initialize them
+//Also we will add an onSubmit prop. Once the <Formik> tag receives this prop it knows to call the handleSubmit function when the button to submit the form is clicked
+//The handleSubmit function will have 2 arguments - their value will be provided by the Formik element when it calls this function.
+//The first argument-value is a JS object which is very similar to the initialValues object, however the properties it contains will have for a value whatever was submitted in the form fields
+//The second parameter- resetForm is a destructured function. This is a utility finction that Formik provides to reset the form values.
+//Right now we are just building the front end so we don't have a back end to receive our data when submitted so for now we will just console.log the values of the submitted fields
+//We will also console.log the data in JSON format-JSON stands for JavaScript Object notation - it is popular text based format for data interchange because actual JS objects
+//are created in actual JS run time environment - if you want to transfer the content of one JS object from one computer to another, we can't just send the object, we have to convert it to a string,
+//so the computer on the other end can use it to recreate the object on its end. JSON can be used to transfer all kinds of text data, not just JS objects.
+//For now we will use the JSON.stringify built in method to turn our "values" into a JSON text string
 //Then inside of the Formik tags, we will use <Form> around our form and several <FormGroup> which will surround our different form fields
 //Each <FormGroup> will have a boolean property of "row" which will give them the Bootstrap row class
 
@@ -29,6 +38,11 @@ import { Formik, Field, Forms, Form } from "formik";
 //This component will be rendered in the ContactPage.js component
 
 const ContactForm = () => {
+    const handleSubmit = (values, {resetForm}) => {
+        console.log("form values:", values);
+        console.log("inJSON format:", JSON.stringify(values));
+        resetForm();
+    }
 
     return (
       <Formik
@@ -41,6 +55,7 @@ const ContactForm = () => {
           contactType: "By Phone",
           feedback: "",
         }}
+        onSubmit={handleSubmit}
       >
         <Form>
           <FormGroup row>
@@ -125,7 +140,13 @@ const ContactForm = () => {
               />
             </Col>
           </FormGroup>
-          <FormGroup row></FormGroup>
+          <FormGroup row>
+            <Col md={{ size:10, offset:2 }}>
+                <Button type="submit" color="primary">
+                    Send Feedback
+                </Button>
+            </Col>
+          </FormGroup>
         </Form>
       </Formik>
     );
