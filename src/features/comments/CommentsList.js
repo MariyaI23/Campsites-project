@@ -1,6 +1,7 @@
 import {Col} from 'reactstrap';
 import Comment from './Comment';
 import { selectCommentsByCampsiteId } from './commentsSlice';
+import CommentForm from './CommentForm';
 
 //In CommentsList's parameter list, we will destructure the campsiteId.
 //In the component body,we will declare a const named comments and assign to it the return value from calling 
@@ -29,6 +30,7 @@ const CommentsList = ({campsiteId}) => {
                 return <Comment key={comment.id} comment={comment}/>
                 
               })}
+              <CommentForm campsiteId={campsiteId}/>
            </Col>
         );
     }

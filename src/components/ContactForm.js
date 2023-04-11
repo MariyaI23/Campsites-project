@@ -1,5 +1,6 @@
 import { Button, Label, Col, FormGroup } from "reactstrap";
-import { Formik, Field, Forms, Form } from "formik";
+import { Formik, Field, Forms, Form, ErrorMessage } from "formik";
+import { validateContactForm } from "../utils/validateContactForm";
 
 //This component will be used to create the Contact Us form on the Contact page
 //We are using the Formik library which provides us with fatser, c;eaner way to create forms in Recat and exposes State and event handlers
@@ -35,6 +36,15 @@ import { Formik, Field, Forms, Form } from "formik";
 //The 6th <Field> will also have an "as" property which will transpile to the HTML textarea element. The "rows" property is NOT Bottstrap related, it relates to how many rows of content will be in the text area
 
 
+//The starting Formik tag(component) will also contain a validate property which will be set up to hold the validateConatctForm function we created
+//in the validateContactForm.js in the "utils" folder. This function will be used to validate if what has been entered into the input fields passes certain conditions
+
+//Then right under each Field component we will enter an ErrorMessage component from the Formik library.
+//This ErrorMessage component MUST have a "name" property which must match the name property of the Field component above it that we are doing the validation for
+//Between the start and end ErrorMessage component will will write an arrow function with an argument of "msg"
+//Formik will take the errors object,from the validateContactForm function, and its specific error messages we set up for each field's validation
+//and will pass this "msg" here to be displayed if needed
+
 //This component will be rendered in the ContactPage.js component
 
 const ContactForm = () => {
@@ -56,6 +66,7 @@ const ContactForm = () => {
           feedback: "",
         }}
         onSubmit={handleSubmit}
+        validate={validateContactForm}
       >
         <Form>
           <FormGroup row>
@@ -68,6 +79,9 @@ const ContactForm = () => {
                placeholder="First Name" 
                className="form-control"
              />
+             <ErrorMessage name="firstName">
+                {(msg) => <p className="text-danger">{msg}</p>}
+             </ErrorMessage>
             </Col>
           </FormGroup>
           <FormGroup row>
@@ -80,6 +94,9 @@ const ContactForm = () => {
                 placeholder="Last Name"
                 className="form-control" 
             />
+            <ErrorMessage name="lastName">
+                {(msg) => <p className="text-danger">{msg}</p>}
+            </ErrorMessage>
             </Col>
           </FormGroup>
           <FormGroup row>
@@ -92,6 +109,9 @@ const ContactForm = () => {
                 placeholder="Phone"
                 className="form-control" 
              />
+             <ErrorMessage name="phoneNum">
+                {(msg) => <p className="text-danger">{msg}</p>}
+             </ErrorMessage>
             </Col>
           </FormGroup>
           <FormGroup row>
@@ -105,6 +125,9 @@ const ContactForm = () => {
                 type="email"
                 className="form-control" 
               />
+              <ErrorMessage name="email">
+                {(msg) => <p className="text-danger">{msg}</p>}
+              </ErrorMessage>
             </Col>
           </FormGroup>
           <FormGroup row>
